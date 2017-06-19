@@ -85,6 +85,23 @@
 
   moles.forEach(mole => mole.addEventListener('click', bonk))
 
+  var pressed = [];
+  var konami = "38384040373937396665";
+
+  window.addEventListener('keyup', (e) => {
+    pressed.push(e.keyCode);
+
+    pressed = pressed.slice(pressed.length - konami.length);
+
+    if(pressed.join('').includes(konami)){
+        score += 1000;
+        scoreBoard.textContent = score;
+        console.log("cheat code enabled!")
+    }
+  })
+
+
+
 </script>
 </body>
 </html>
