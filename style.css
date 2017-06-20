@@ -23,7 +23,21 @@ button{
   padding: 15px;
 }
 
-.start{
+label{
+  font-size: 2.5em;
+  display: block;
+}
+
+.difficulty-label{
+  font-size: 2em;
+  padding: 15px;
+}
+
+input{
+  margin-bottom: 20px;
+}
+
+.controls{
   text-align: center;
   margin-top: 15px;
 }

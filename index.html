@@ -9,9 +9,11 @@
 <body>
 
   <h1>Whack-a-mole! <span class="score">0</span></h1>
-  <div class="start">
-      <button onClick="startGame()">Start!</button>
-
+  <div class="controls">
+    <label for="difficulty">Difficulty:</label>
+    <span class="difficulty-label">Hard</span><input id="difficulty" type="range" name="difficulty" max="1000" min="400"  value="1000"><span class="difficulty-label">Easy</span>
+    <br>
+    <button onClick="startGame()">Start!</button>
   </div>
 
   <div class="game">
@@ -39,9 +41,11 @@
   const holes = document.querySelectorAll('.hole');
   const scoreBoard = document.querySelector('.score');
   const moles = document.querySelectorAll('.mole');
+  const difficulty = document.querySelector('#difficulty');
   var lastHole;
   var timeUp;
   var score = 0;
+  var maxSpeed = 1000;
 
 
   function randomTime(min, max){
@@ -58,8 +62,14 @@
       return hole;
   }
 
+  function handleUpdate(){
+      maxSpeed = this.value;
+  }
+
+  difficulty.addEventListener('change', handleUpdate);
+
   function peep(){
-      const time = randomTime(300,1000);
+      const time = randomTime(300, maxSpeed);
       const hole = randomHole(holes);
       hole.classList.add('up')
       setTimeout(() => {
